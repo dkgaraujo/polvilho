@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		801092CC2AA6A66800F38399 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801092CB2AA6A66800F38399 /* main.swift */; };
+		801092D32AA6AFE000F38399 /* chrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801092D22AA6AFE000F38399 /* chrome.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,10 +26,19 @@
 /* Begin PBXFileReference section */
 		801092C82AA6A66800F38399 /* polvilho */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = polvilho; sourceTree = BUILT_PRODUCTS_DIR; };
 		801092CB2AA6A66800F38399 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		801092D22AA6AFE000F38399 /* chrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chrome.swift; sourceTree = "<group>"; };
+		801092D82AA6B44200F38399 /* chrome tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "chrome tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		801092C52AA6A66800F38399 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		801092D52AA6B44200F38399 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -50,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				801092C82AA6A66800F38399 /* polvilho */,
+				801092D82AA6B44200F38399 /* chrome tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,6 +69,7 @@
 			isa = PBXGroup;
 			children = (
 				801092CB2AA6A66800F38399 /* main.swift */,
+				801092D22AA6AFE000F38399 /* chrome.swift */,
 			);
 			path = polvilho;
 			sourceTree = "<group>";
@@ -82,6 +94,23 @@
 			productReference = 801092C82AA6A66800F38399 /* polvilho */;
 			productType = "com.apple.product-type.tool";
 		};
+		801092D72AA6B44200F38399 /* chrome tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 801092DC2AA6B44200F38399 /* Build configuration list for PBXNativeTarget "chrome tests" */;
+			buildPhases = (
+				801092D42AA6B44200F38399 /* Sources */,
+				801092D52AA6B44200F38399 /* Frameworks */,
+				801092D62AA6B44200F38399 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "chrome tests";
+			productName = "chrome tests";
+			productReference = 801092D82AA6B44200F38399 /* chrome tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -93,6 +122,9 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					801092C72AA6A66800F38399 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					801092D72AA6B44200F38399 = {
 						CreatedOnToolsVersion = 14.3.1;
 					};
 				};
@@ -111,9 +143,20 @@
 			projectRoot = "";
 			targets = (
 				801092C72AA6A66800F38399 /* polvilho */,
+				801092D72AA6B44200F38399 /* chrome tests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		801092D62AA6B44200F38399 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		801092C42AA6A66800F38399 /* Sources */ = {
@@ -121,6 +164,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				801092CC2AA6A66800F38399 /* main.swift in Sources */,
+				801092D32AA6AFE000F38399 /* chrome.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		801092D42AA6B44200F38399 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +313,46 @@
 			};
 			name = Release;
 		};
+		801092DD2AA6B44200F38399 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 94FZ9GCMQW;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.DKGA.chrome-tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		801092DE2AA6B44200F38399 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 94FZ9GCMQW;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.DKGA.chrome-tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -279,6 +370,15 @@
 			buildConfigurations = (
 				801092D02AA6A66800F38399 /* Debug */,
 				801092D12AA6A66800F38399 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		801092DC2AA6B44200F38399 /* Build configuration list for PBXNativeTarget "chrome tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				801092DD2AA6B44200F38399 /* Debug */,
+				801092DE2AA6B44200F38399 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

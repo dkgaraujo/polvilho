@@ -6,11 +6,7 @@
 //
 
 import Foundation
-import SQLite3
 
-// path to Chrome cookies
-let chromeCookiesDB = NSString("~/Library/Application Support/Google/Chrome/Default/Cookies")
-    .expandingTildeInPath
 
 // path to Mozilla cookies
 
@@ -18,29 +14,13 @@ let chromeCookiesDB = NSString("~/Library/Application Support/Google/Chrome/Defa
 
 // path to DuckDuckGo cookies
 
-func countChromeCookies() {
-    var db: OpaquePointer? = nil
-    if sqlite3_open(chromeCookiesDB, &db) == SQLITE_OK {
-        print("Chrome cookines... found!")
-        print("\n")
-        
-        let countCookiesQuery = "select count(*) from cookies"
-        var statement: OpaquePointer? = nil
-        
-        if
-            sqlite3_prepare_v2(db, countCookiesQuery, -1, &statement, nil) == SQLITE_OK {
-            if sqlite3_step(statement) == SQLITE_ROW {
-                let cookieCount = sqlite3_column_int(statement, 0)
-                print("Number of cookies found: \(cookieCount)")
-            } else {
-                print("Couldn't count :(")
-            }
-        } else {
-            print("Query preparation failed")
-        }
-    } else {
-        print("Failure...")
-    }
+var deleteCookies: Bool = false
+let arguments = CommandLine.arguments
+
+if arguments.contains("--delete") || arguments.contains("-d") {
+    deleteCookies = true
+} else {
+    deleteCookies = false
 }
 
-countChromeCookies()
+countChromeCookies(delete: deleteCookies)
