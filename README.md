@@ -1,4 +1,4 @@
-# *E aí, bão?*
+# *E aí, bão?* 🤠
 
 polvilho is a command line interface tool to manage browser cookies.
 
