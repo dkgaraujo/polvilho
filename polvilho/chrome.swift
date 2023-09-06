@@ -8,11 +8,13 @@
 import Foundation
 import SQLite3
 
-// path to Chrome cookies
-let chromeCookiesDB = NSString("~/Library/Application Support/Google/Chrome/Default/Cookies")
-    .expandingTildeInPath
 
-func countChromeCookies(delete: Bool) {
+
+public func countChromeCookies(delete: Bool) {
+    // path to Chrome cookies
+    let chromeCookiesDB = NSString("~/Library/Application Support/Google/Chrome/Default/Cookies")
+        .expandingTildeInPath
+    
     var db: OpaquePointer? = nil
     if sqlite3_open(chromeCookiesDB, &db) == SQLITE_OK {
         print("Chrome cookies... found!")
