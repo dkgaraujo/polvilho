@@ -14,7 +14,10 @@ struct Polvilho: ParsableCommand {
     var deleteCookies: Bool = false
     
     func run() throws {
-        countChromeCookies(delete: deleteCookies)
+        print("To understand the good and bad aspects of cookies, a good general intro is:")
+        print("https://youtu.be/rdVPflECed8?feature=shared")
+        
+        manageChromeCookies(delete: deleteCookies)
         }
 }
 
