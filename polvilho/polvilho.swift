@@ -14,7 +14,7 @@ struct Polvilho: ParsableCommand {
     var deleteCookies: Bool = false
     
     func run() throws {
-        countChromeCookies(delete: true)
+        countChromeCookies(delete: deleteCookies)
         }
 }
 

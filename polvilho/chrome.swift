@@ -40,7 +40,7 @@ public func countChromeCookies(delete: Bool) {
         
         // Delete cookies (if prompted by user)
 
-        if delete == true {
+        if delete {
             if sqlite3_prepare_v2(db, deleteCookiesQuery, -1, &statement, nil) == SQLITE_OK {
                 if sqlite3_step(statement) == SQLITE_DONE {
                     print("Chrome cookies deleted!")

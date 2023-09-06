@@ -305,6 +305,7 @@
 		801092D02AA6A66800F38399 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 94FZ9GCMQW;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -316,6 +317,7 @@
 		801092D12AA6A66800F38399 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 94FZ9GCMQW;
 				ENABLE_HARDENED_RUNTIME = YES;
