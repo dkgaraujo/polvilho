@@ -11,6 +11,7 @@
 		801092D32AA6AFE000F38399 /* chrome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 801092D22AA6AFE000F38399 /* chrome.swift */; };
 		8048C40C2AA8463000DB03E8 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 8048C40B2AA8463000DB03E8 /* ArgumentParser */; };
 		8048C40E2AA8463000DB03E8 /* generate-manual in Frameworks */ = {isa = PBXBuildFile; productRef = 8048C40D2AA8463000DB03E8 /* generate-manual */; };
+		806942DD2AAE2A2B00B307E1 /* electronjs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806942DC2AAE2A2B00B307E1 /* electronjs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,6 +31,7 @@
 		801092CB2AA6A66800F38399 /* polvilho.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = polvilho.swift; sourceTree = "<group>"; };
 		801092D22AA6AFE000F38399 /* chrome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chrome.swift; sourceTree = "<group>"; };
 		801092D82AA6B44200F38399 /* chrome tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "chrome tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		806942DC2AAE2A2B00B307E1 /* electronjs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = electronjs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 			children = (
 				801092CB2AA6A66800F38399 /* polvilho.swift */,
 				801092D22AA6AFE000F38399 /* chrome.swift */,
+				806942DC2AAE2A2B00B307E1 /* electronjs.swift */,
 			);
 			path = polvilho;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				806942DD2AAE2A2B00B307E1 /* electronjs.swift in Sources */,
 				801092CC2AA6A66800F38399 /* polvilho.swift in Sources */,
 				801092D32AA6AFE000F38399 /* chrome.swift in Sources */,
 			);
