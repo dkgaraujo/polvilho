@@ -14,20 +14,19 @@ struct Polvilho: ParsableCommand {
     var deleteCookies: Bool = false
     
     func run() throws {
-        // Example usage
-        let libraryURL = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first!.appending(path: "Application Support")
-        let targetFileName = "Cookies"
-
-        let matchingFolders = findFoldersContainingFile(filename: targetFileName, inDirectory: libraryURL)
+        print("To understand the good and bad aspects of cookies, a good general intro is:")
+        print("https://youtu.be/rdVPflECed8?feature=shared")
+        
+        // Chrome
+        manageChromeCookies(delete: deleteCookies)
+        
+        // ElectronJS apps
+        let matchingFolders = findElectronJSCookies()
 
         for folder in matchingFolders {
             print("Found matching folder: \(folder.path)")
         }
         
-        print("To understand the good and bad aspects of cookies, a good general intro is:")
-        print("https://youtu.be/rdVPflECed8?feature=shared")
-        
-        manageChromeCookies(delete: deleteCookies)
         }
 }
 

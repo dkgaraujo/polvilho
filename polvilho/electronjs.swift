@@ -7,6 +7,13 @@
 
 import Foundation
 
+func directoryContainsFile(filename: String, inDirectory directory: URL) -> Bool {
+    let fileManager = FileManager.default
+    let contents = try? fileManager.contentsOfDirectory(atPath: directory.path)
+    return contents?.contains(filename) ?? false
+}
+
+
 func findFoldersContainingFile(filename: String, inDirectory directory: URL) -> [URL] {
     do {
         let fileManager = FileManager.default
@@ -43,10 +50,11 @@ func findFoldersContainingFile(filename: String, inDirectory directory: URL) -> 
     }
 }
 
-func directoryContainsFile(filename: String, inDirectory directory: URL) -> Bool {
-    let fileManager = FileManager.default
-    let contents = try? fileManager.contentsOfDirectory(atPath: directory.path)
-    return contents?.contains(filename) ?? false
+func findElectronJSCookies() -> [URL] {
+    let libraryURL = FileManager.default.urls(for: .libraryDirectory, in: .userDomainMask).first!.appending(path: "Application Support")
+    let targetFileName = "Cookies"
+    
+    let matchingFolders = findFoldersContainingFile(filename: targetFileName, inDirectory: libraryURL)
+    
+    return matchingFolders
 }
-
-
