@@ -13,6 +13,9 @@ struct Polvilho: ParsableCommand {
     @Flag(name: .shortAndLong, help: "Delete all cookies found.")
     var deleteCookies: Bool = false
     
+    @Flag(name: .shortAndLong, help: "Searches cookies of chromium-based apps.")
+    var apps: Bool = false
+    
     func run() throws {
         print("To understand the good and bad aspects of cookies, a good general intro is:")
         print("https://youtu.be/rdVPflECed8?feature=shared")
@@ -20,13 +23,17 @@ struct Polvilho: ParsableCommand {
         // Chrome
         manageChromeCookies(delete: deleteCookies)
         
-        // ElectronJS apps
-        let matchingFolders = findElectronJSCookies()
-
-        for folder in matchingFolders {
-            print("Found matching folder: \(folder.path)")
-        }
+        // Safari
+        manageSafariCookies()
         
+        if apps {
+            // ElectronJS apps
+            let matchingFolders = findElectronJSCookies()
+
+            for folder in matchingFolders {
+                print("Found matching folder: \(folder.path)")
+            }
         }
+    }
 }
 
