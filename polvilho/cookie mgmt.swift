@@ -8,11 +8,25 @@
 import Foundation
 import SQLite3
 
+// https://stackoverflow.com/questions/43518199/cookies-expiration-time-format#43520042
+let COOKIE_TIMESTAMP_ADJ:Double = 11644473600
+
+let countCookiesQuery = "select count(*) from cookies"
+let oldestCookieQuery = """
+select creation_utc from cookies where creation_utc =
+(SELECT min(creation_utc) FROM cookies)
+"""
+let newestCookieQuery = """
+select creation_utc from cookies where creation_utc =
+(SELECT max(creation_utc) FROM cookies)
+"""
+let deleteCookiesQuery = "delete from cookies;"
+
 func FormatCookieDate(CookieTimeStamp: Int64) -> String {
     let CookieDate = Date(timeIntervalSince1970: TimeInterval(Double(CookieTimeStamp) / 1_000_000 - COOKIE_TIMESTAMP_ADJ)) // weird dates
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-    dateFormatter.timeZone = TimeZone(identifier: "UTC") // Use UTC or your desired timezone
+    dateFormatter.timeZone = TimeZone(identifier: "UTC") // Use UTC for comparability
 
     return dateFormatter.string(from: CookieDate)
 }
@@ -22,16 +36,6 @@ func ManageCookies(cookiesDB: String, name: String, delete: Bool) {
     if sqlite3_open(cookiesDB, &db) == SQLITE_OK {
         print("\(name) cookies found!")
         
-        let countCookiesQuery = "select count(*) from cookies"
-        let oldestCookieQuery = """
-select creation_utc from cookies where creation_utc =
-(SELECT min(creation_utc) FROM cookies)
-"""
-        let newestCookieQuery = """
-select creation_utc from cookies where creation_utc =
-(SELECT max(creation_utc) FROM cookies)
-"""
-        let deleteCookiesQuery = "delete from cookies;"
         var statement: OpaquePointer? = nil
         
         // Count cookies
@@ -76,7 +80,6 @@ select creation_utc from cookies where creation_utc =
         
         
         // Delete cookies (if prompted by user)
-
         if delete {
             if sqlite3_prepare_v2(db, deleteCookiesQuery, -1, &statement, nil) == SQLITE_OK {
                 if sqlite3_step(statement) == SQLITE_DONE {

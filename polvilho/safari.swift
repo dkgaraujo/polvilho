@@ -10,7 +10,7 @@ import Foundation
 // sources:
 // https://community.spiceworks.com/topic/2454811-understanding-the-safari-cookies-binarycookies-file-format
 // https://stackoverflow.com/questions/7545885/safari-5-1-cookie-format-specs
-//
+// https://github.com/icodeforlove/BinaryCookies.swift/blob/master/Cookies/BinaryCookies.swift
 
 // path to Safari cookies
 let safariCookiesDB = NSString("~/Library/Cookies/Cookies.binarycookies")
