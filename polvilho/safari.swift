@@ -13,8 +13,8 @@ import Foundation
 // https://github.com/icodeforlove/BinaryCookies.swift/blob/master/Cookies/BinaryCookies.swift
 
 // path to Safari cookies
-let safariCookiesDB = NSString("~/Library/Cookies/Cookies.binarycookies")
-    .expandingTildeInPath
+let safariCookiesDB = NSURL(fileURLWithPath: NSString("~/Library/Cookies/Cookies.binarycookies")
+    .expandingTildeInPath)
 
 func numSafariCookies(binPath: String) -> UInt32? {
     guard let data = FileManager.default.contents(atPath: binPath) else {
@@ -23,12 +23,12 @@ func numSafariCookies(binPath: String) -> UInt32? {
     }
     
     guard data.count >= 8 else {
-        print("Cookies.binarycookies file is too small.")
+        print("Safari's Cookies.binarycookies file is too small.")
         return nil
     }
     
     guard String(data: data.subdata(in: 0..<4), encoding: .ascii) == "cook" else {
-        print("Cookies.binarycookies seems to be corrupted.")
+        print("Safari's Cookies.binarycookies file seems to be corrupted.")
         return nil
     }
     
@@ -42,6 +42,17 @@ func numSafariCookies(binPath: String) -> UInt32? {
 public func manageSafariCookies() {
     // TO-DO:
     // 1) actually be able to read the cookies, not just find the file
+//    var data = NSData(base64Encoded: "Y29vawAAAAsAAAAMAAABkgAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAQAAAAAAAAAAAAAAAQAEAAAAHAAAAHkAAADcAAAANwEAAAAAAABdAAAAAAAAAAQAAAAAAAAAOAAAAEwAAABVAAAAVwAAAAAAAAAAAAAAAAAAZ3SDu0EAAADnIoK7QXVybGVjaG8uYXBwc3BvdC5jb20AaHR0cE9ubHkALwB2YWx1ZQBjAAAAAAAAAAUAAAAAAAAAOAAAAEwAAABbAAAAXQAAAAAAAAAAAAAAAAAAZ3SDu0EAAADnIoK7QXVybGVjaG8uYXBwc3BvdC5jb20AaHR0cE9ubHlTZWN1cmUALwB2YWx1ZQBbAAAAAAAAAAAAAAAAAAAAOAAAAEwAAABTAAAAVQAAAAAAAAAAAAAAAAAAZ3SDu0EAAADnIoK7QXVybGVjaG8uYXBwc3BvdC5jb20Abm9ybWFsAC8AdmFsdWUAWwAAAAAAAAABAAAAAAAAADgAAABMAAAAUwAAAFUAAAAAAAAAAAAAAAAAAGd0g7tBAAAA5yKCu0F1cmxlY2hvLmFwcHNwb3QuY29tAHNlY3VyZQAvAHZhbHVlAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAFjMHFyAFAAAAS2JwbGlzdDAw0QECXxAYTlNIVFRQQ29va2llQWNjZXB0UG9saWN5EAIICyYAAAAAAAABAQAAAAAAAAADAAAAAAAAAAAAAAAAAAAAKA==", options: NSData.Base64DecodingOptions(rawValue: 0));
+//    print("WEIRD SAFARI DATA: \(String(describing: data))")
     
-    print(numSafariCookies(binPath: safariCookiesDB) ?? "") // it doesn't seem like the number is right...
+    BinaryCookies.parse(cookieURL: safariCookiesDB, callback: {
+        (error:BinaryCookiesError?, cookies) in
+
+        if let cookies = cookies {
+            print(cookies);
+        } else {
+            print(error ?? "Unknown error in Safari");
+        }
+    })
+    //print(numSafariCookies(binPath: safariCookiesDB) ?? "") // it doesn't seem like the number is right...
 }
