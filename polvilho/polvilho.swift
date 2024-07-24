@@ -13,7 +13,7 @@ struct Polvilho: ParsableCommand {
     @Flag(name: .shortAndLong, help: "Delete all cookies found.")
     var deleteCookies: Bool = false
     
-    @Flag(name: .shortAndLong, help: "Searches cookies of chromium-based apps.")
+    // @Flag(name: .shortAndLong, help: "Searches cookies of chromium-based apps.")
     var apps: Bool = false
     
     func run() throws {
@@ -24,12 +24,14 @@ struct Polvilho: ParsableCommand {
         manageChromeCookies(delete: deleteCookies)
         
         // Safari
-        manageSafariCookies()
+        // manageSafariCookies()
         
         if apps {
             // ElectronJS apps
             let matchingFolders = findElectronJSCookies()
 
+            print("\(matchingFolders.count) electronJS apps found.")
+            
             for folder in matchingFolders {
                 print("Found matching folder: \(folder.path)")
             }
