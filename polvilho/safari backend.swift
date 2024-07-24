@@ -230,7 +230,7 @@ class CookieParser {
         
         let nsCookieString = cookie.data.toString(encoding: NSASCIIStringEncoding) as NSString
         
-        for (index, offset) in offsets.enumerated() {
+        for (index, offset) in offsets.enumerated() {
             let endOffset = nsCookieString.range(of: "\u{0000}", options: NSString.CompareOptions.caseInsensitive, range: NSMakeRange(Int(offset), nsCookieString.length - Int(offset))).location
             
             let string = nsCookieString.substring(with: NSMakeRange(Int(offset), Int(endOffset)-Int(offset)))
