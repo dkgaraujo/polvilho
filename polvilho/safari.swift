@@ -54,5 +54,5 @@ public func manageSafariCookies() {
             print(error ?? "Unknown error in Safari");
         }
     })
-    //print(numSafariCookies(binPath: safariCookiesDB) ?? "") // it doesn't seem like the number is right...
+    print(numSafariCookies(binPath: safariCookiesDB.path!) ?? "") // it doesn't seem like the number is right...
 }
